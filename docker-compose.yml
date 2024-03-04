@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  hotwheels-api:
+    image: bitnami/postgresql:latest
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=hotwheels-api
+    volumes:
+      - hotwheels-api_data:/bitnami/postgresql
+
+volumes:
+  hotwheels-api_data:
