@@ -1,6 +1,5 @@
-import { PrismaUsersRepository } from '@/repositories/prisma/prisma-users-repository'
 import { UserAlreadyExistsError } from '@/use-cases/errors/user-already-exists-error'
-import { RegisterUserUseCase } from '@/use-cases/register-user'
+import { makeRegisterUseCase } from '@/use-cases/factories/make-register-use-case'
 import { FastifyRequest, FastifyReply } from 'fastify'
 import z from 'zod'
 
@@ -20,8 +19,7 @@ export async function registerUser(
   try {
     // Aplicando a inversão de dependência
     // Este arquivo que deve enviar as dependências como parâmetro para o useCase
-    const usersRepository = new PrismaUsersRepository()
-    const registerUseCase = new RegisterUserUseCase(usersRepository)
+    const registerUseCase = makeRegisterUseCase()
 
     await registerUseCase.execute({
       name,
