@@ -1,6 +1,6 @@
 import { CarsRepository } from "@/repositories/interfaces/cars-repository";
 import { Car } from "@prisma/client";
-import { ResourceNotFoundError } from "./errors/resource-not-found-error";
+import { CarDoesNotExistsError } from "./errors/car-does-not-exists-error";
 
 interface getCarDetailRequest {
   carId: string
@@ -17,7 +17,7 @@ export class GetCarDetailUseCase {
     const car = await this.carsRepository.findById(carId)
 
     if (!car) {
-      throw new ResourceNotFoundError()
+      throw new CarDoesNotExistsError()
     }
 
 
