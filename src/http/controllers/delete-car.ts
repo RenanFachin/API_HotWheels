@@ -10,9 +10,9 @@ export async function deleteCar(request: FastifyRequest, reply: FastifyReply) {
 
   const { carId } = deleteCarParamsSchema.parse(request.params)
 
-  const deleteCar = makeDeleteCarUseCase()
-
+  
   try {
+    const deleteCar = makeDeleteCarUseCase()
     await deleteCar.execute({ carId })
 
   } catch (error) {

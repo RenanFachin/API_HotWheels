@@ -43,12 +43,22 @@ export class PrismaCarsRepository implements CarsRepository {
   }
 
   async deleteById(carId: string) {
-     await prisma.car.delete({
+    await prisma.car.delete({
       where: {
         id: carId
       }
-     })
+    })
 
-     return 
+    return
+  }
+
+  async listAll(userId: string) {
+    const cars = await prisma.car.findMany({
+      where: {
+        user_id: userId,
+      },
+    })
+
+    return cars
   }
 }

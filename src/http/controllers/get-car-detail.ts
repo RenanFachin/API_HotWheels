@@ -10,10 +10,10 @@ export async function getCarDetail(request: FastifyRequest, reply: FastifyReply,
 
   const { carId } = getCarDetailSchema.parse(request.params)
 
-  const getCarDetail = makeGetCarDetailUseCase()
-
+  
   // console.log(carId)
   try {
+    const getCarDetail = makeGetCarDetailUseCase()
     const car = await getCarDetail.execute({
       carId
     })

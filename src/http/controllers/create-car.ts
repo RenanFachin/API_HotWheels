@@ -2,7 +2,7 @@ import { makeCreateCarUseCase } from "@/use-cases/factories/make-create-car-use-
 import { FastifyReply, FastifyRequest } from "fastify";
 import z from 'zod'
 
-export async function createCar(request: FastifyRequest, reply: FastifyReply,) {
+export async function createCar(request: FastifyRequest, reply: FastifyReply) {
   const createCarBodySchema = z.object({
     userId: z.string().cuid(),
     name: z.string(),
@@ -13,7 +13,7 @@ export async function createCar(request: FastifyRequest, reply: FastifyReply,) {
 
   const { userId, name, year, brand, color } = createCarBodySchema.parse(request.body)
 
-
+  
   try {
     const createCarUseCase = makeCreateCarUseCase()
 

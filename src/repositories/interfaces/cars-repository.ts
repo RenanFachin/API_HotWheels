@@ -13,4 +13,5 @@ export interface CarsRepository {
   findById(carId: string): Promise<Car | null>
   update(carId: string, car: carProps): Promise<Car>
   deleteById(carId: string): Promise<void>
+  listAll(userId: string): Promise<Car[]>
 }
