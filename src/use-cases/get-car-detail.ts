@@ -10,7 +10,7 @@ interface getCarDetailResponse {
   car: Car
 }
 
-export class GetCarDetail {
+export class GetCarDetailUseCase {
   constructor(private carsRepository: CarsRepository) { }
 
   async execute({ carId }: getCarDetailRequest): Promise<getCarDetailResponse> {

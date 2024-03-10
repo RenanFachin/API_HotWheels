@@ -16,7 +16,7 @@ export class PrismCarsRepository implements CarsRepository {
   }
 
   async findById(carId: string) {
-    const car = await prisma.car.findFirstOrThrow({
+    const car = await prisma.car.findUniqueOrThrow({
       where: {
         id: carId
       }
