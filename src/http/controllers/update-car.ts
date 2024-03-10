@@ -22,17 +22,21 @@ export async function updateCar(request: FastifyRequest, reply: FastifyReply,) {
 
   const updateCar = makeUpdateCarUseCase()
 
-  const car = await updateCar.execute({
-    carId,
-    car: {
-      brand,
-      color,
-      name,
-      year
-    }
-  })
+  try {
+    const car = await updateCar.execute({
+      carId,
+      car: {
+        brand,
+        color,
+        name,
+        year
+      }
+    })
 
-  return reply.status(201).send({
-    car
-  })
+    return reply.status(201).send({
+      car
+    })
+  } catch (error) {
+    throw error
+  }
 }

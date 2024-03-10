@@ -10,6 +10,7 @@ interface carProps {
 }
 export interface CarsRepository {
   create(data: Prisma.CarUncheckedCreateInput): Promise<Car>
-  findById(carId: string): Promise<Car>
+  findById(carId: string): Promise<Car | null>
   update(carId: string, car: carProps): Promise<Car>
+  deleteById(carId: string): Promise<void>
 }

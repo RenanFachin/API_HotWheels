@@ -5,6 +5,7 @@ import { prisma } from "@/lib/prisma";
 
 // CarUncheckedCreateInput -> retorna também os relacionamentos que está tabela possui
 export class PrismaCarsRepository implements CarsRepository {
+
   async create(data: Prisma.CarUncheckedCreateInput) {
 
     const newCar = await prisma.car.create({
@@ -15,7 +16,7 @@ export class PrismaCarsRepository implements CarsRepository {
   }
 
   async findById(carId: string) {
-    const car = await prisma.car.findUniqueOrThrow({
+    const car = await prisma.car.findUnique({
       where: {
         id: carId
       }
@@ -39,5 +40,15 @@ export class PrismaCarsRepository implements CarsRepository {
     })
 
     return updatedCar
+  }
+
+  async deleteById(carId: string) {
+     await prisma.car.delete({
+      where: {
+        id: carId
+      }
+     })
+
+     return 
   }
 }
