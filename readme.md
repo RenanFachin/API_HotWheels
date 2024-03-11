@@ -26,12 +26,16 @@ Requisitos que não partem do cliente, são requisitos mais técnicos. ex: Qual 
 - [x] Os dados da aplicação precisam estar persistido em um banco PostgreSQL;
 - [ ] O usuário deve ser identificado por um JWT (JSON Web Token);
 
-## Instalação do ambiente
+## Executando o projeto
 ```js
+
 // Instalar dependências
 npm i
 
-// Inicializar o container
+// Copiar o arquivo com os dados de conexão e demais variáveis ambiente
+cp .env.example .env
+
+// Subir o serviço do PostgreSQL via docker
 docker compose up -d
 
 // Criar as tabelas do banco de dados (em desenvolvimento)
@@ -46,3 +50,10 @@ npm run dev
 
 ## Insomnia test
 [![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=API-hotwheels&uri=https%3A%2F%2Fraw.githubusercontent.com%2FRenanFachin%2FAPI_HotWheels%2Fmain%2Fapi-hotwheels-insomnia-export.json%3Ftoken%3DGHSAT0AAAAAABV4J7KLL3HN4TCH52ATHE6KZPPHHDQ)
+
+## Tech
+
+- NodeJS
+- Prisma
+- PostgreSQL
+- Typescript
