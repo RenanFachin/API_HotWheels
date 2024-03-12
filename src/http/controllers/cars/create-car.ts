@@ -4,27 +4,27 @@ import z from 'zod'
 
 export async function createCar(request: FastifyRequest, reply: FastifyReply) {
   const createCarBodySchema = z.object({
-    userId: z.string().cuid(),
+    // userId: z.string().cuid(),
     name: z.string(),
     year: z.string(),
     brand: z.string(),
     color: z.string()
   })
 
-  const { userId, name, year, brand, color } = createCarBodySchema.parse(request.body)
+  const { name, year, brand, color } = createCarBodySchema.parse(request.body)
 
-  
+
   try {
     const createCarUseCase = makeCreateCarUseCase()
 
     await createCarUseCase.execute({
-      userId, 
-      name, 
+      userId: request.user.sub,
+      name,
       year,
       brand,
       color
     })
-    
+
   } catch (error) {
     throw error
   }

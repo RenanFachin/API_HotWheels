@@ -24,7 +24,7 @@ Requisitos que não partem do cliente, são requisitos mais técnicos. ex: Qual 
 
 - [x] A senha do usuário precisa estar criptografada;
 - [x] Os dados da aplicação precisam estar persistido em um banco PostgreSQL;
-- [ ] O usuário deve ser identificado por um JWT (JSON Web Token);
+- [x] O usuário deve ser identificado por um JWT (JSON Web Token);
 
 ## Executando o projeto
 ```js
@@ -46,6 +46,9 @@ npx prisma migrate deploy
 
 // Execute o projeto
 npm run dev
+
+// Visualizando o banco de dados
+npx prisma studio
 ```
 
 ## Insomnia test
