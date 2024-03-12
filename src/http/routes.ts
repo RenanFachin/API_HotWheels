@@ -7,6 +7,7 @@ import { updateCar } from './controllers/update-car'
 import { deleteCar } from './controllers/delete-car'
 import { ListAllCar } from './controllers/list-all-car'
 import { profile } from './controllers/profile'
+import { verifyJWT } from './middlewares/verify-jwt'
 
 export async function appRoutes(app: FastifyInstance) {
   // Usuário
@@ -17,7 +18,7 @@ export async function appRoutes(app: FastifyInstance) {
 
   /** Authenticated routes */
   // User Profile
-  app.get('/me', profile)
+  app.get('/me', { onRequest: [verifyJWT] }, profile)
 
   // Carros
   app.post('/cars', createCar)
