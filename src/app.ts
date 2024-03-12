@@ -1,6 +1,7 @@
 import fastify from 'fastify'
 
-import { appRoutes } from './http/routes'
+import { usersRoutes } from './http/controllers/users/routes'
+import { carsRoutes } from './http/controllers/cars/routes'
 import { ZodError } from 'zod'
 import { env } from './env'
 import chalk from 'chalk'
@@ -12,7 +13,9 @@ app.register(fastifyJwt, {
   secret: env.JWT_SECRET
 })
 
-app.register(appRoutes)
+// Cadastrando as rotas
+app.register(usersRoutes)
+app.register(carsRoutes)
 
 // Error handler
 app.setErrorHandler((error, request, reply) => {
