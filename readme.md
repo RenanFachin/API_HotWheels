@@ -54,6 +54,7 @@ npm run dev
 ## Tech
 
 - NodeJS
+- Fastify
 - Prisma
 - PostgreSQL
 - Typescript

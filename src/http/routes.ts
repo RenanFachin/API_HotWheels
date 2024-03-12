@@ -6,6 +6,7 @@ import { getCarDetail } from './controllers/get-car-detail'
 import { updateCar } from './controllers/update-car'
 import { deleteCar } from './controllers/delete-car'
 import { ListAllCar } from './controllers/list-all-car'
+import { profile } from './controllers/profile'
 
 export async function appRoutes(app: FastifyInstance) {
   // Usuário
@@ -13,6 +14,10 @@ export async function appRoutes(app: FastifyInstance) {
 
   // Autenticação
   app.post('/sessions', authenticate)
+
+  /** Authenticated routes */
+  // User Profile
+  app.get('/me', profile)
 
   // Carros
   app.post('/cars', createCar)

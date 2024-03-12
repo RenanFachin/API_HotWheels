@@ -4,8 +4,13 @@ import { appRoutes } from './http/routes'
 import { ZodError } from 'zod'
 import { env } from './env'
 import chalk from 'chalk'
+import fastifyJwt from '@fastify/jwt'
 
 export const app = fastify()
+
+app.register(fastifyJwt, {
+  secret: env.JWT_SECRET
+})
 
 app.register(appRoutes)
 
@@ -20,7 +25,7 @@ app.setErrorHandler((error, request, reply) => {
   if (env.NODE_ENV !== 'production') {
     console.error(chalk.bgRed.white(error))
   } else {
-    
+
   }
 
   return reply.status(500).send({ message: 'Internal server error.' })
