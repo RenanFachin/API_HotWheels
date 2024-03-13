@@ -6,11 +6,16 @@ import { ZodError } from 'zod'
 import { env } from './env'
 import chalk from 'chalk'
 import fastifyJwt from '@fastify/jwt'
+import fastifyCors from '@fastify/cors'
 
 export const app = fastify()
 
 app.register(fastifyJwt, {
   secret: env.JWT_SECRET
+})
+
+app.register(fastifyCors, {
+  origin: true
 })
 
 // Cadastrando as rotas
