@@ -2,6 +2,8 @@
 Aplicação desenvolvida com a finalidade de estudo em nodeJS, docker e princípios do SOLID.
 O projeto é uma API REST para que usuários possam fazer registros de carros específicos.
 
+O deploy da aplicação se encontra no endereço: [API-URL](https://api-hotwheels.onrender.com)
+
 ## Requisitos funcionais
 O que é possível que o usuário faça na aplicação.
 
