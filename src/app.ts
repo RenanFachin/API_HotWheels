@@ -11,7 +11,7 @@ import fastifyCors from '@fastify/cors'
 export const app = fastify()
 
 app.register(fastifyJwt, {
-  secret: env.JWT_SECRET
+  secret: env.JWT_SECRET,
 })
 
 app.register(fastifyCors, {

@@ -26,9 +26,11 @@ export async function authenticate(
     // registrando o token e o user_id no payload
     const token = await reply.jwtSign({}, {
       sign: {
-        sub: user.id
+        sub: user.id,
+        expiresIn: '7d'
       }
     })
+
 
     return reply.status(200).send({
       token
